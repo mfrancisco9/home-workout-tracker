@@ -4,9 +4,15 @@ const db = require ('../../models');
 
 // workouts routes
 
-// findinging previous workouts
+// finding previous workouts
 router.get('/api/workouts', (req, res) => {
-
+    db.Workout.find({}).sort({date: -1})
+    .then((data) => {
+        res.status(200).json(data);
+    })
+    .catch((err) => {
+        res.status(400).json(err)
+    })
 })
 
 
@@ -14,7 +20,13 @@ router.get('/api/workouts', (req, res) => {
 
 // adding workout
 router.post('/api/workouts', (req, res) => {
-
+    db.Workout.create(req.body)
+    .then((data) => {
+        res.status(200).json(data);
+    })
+    .catch((err) => {
+        res.status(400).json(err);
+    })
 })
 
 
