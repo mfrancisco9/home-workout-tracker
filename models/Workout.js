@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Scheme = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
     type: {
@@ -44,6 +44,17 @@ const workoutSchema = new Schema({
     },
     exercises: [exerciseSchema]
 });
+
+
+// tallying total duration
+
+workoutSchema.virtual("totalDuration").get(function () {
+    let totalDuration = 0;
+    this.exercises.forEach((el) => {
+      totalDuration += el.duration;
+    });
+    return totalDuration;
+  });
 
 
 const Workout = mongoose.model("Workout", workoutSchema);
