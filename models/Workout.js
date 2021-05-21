@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const exerciseSchema = new Schema({
+const exercises = {
     type: {
         type: String,
         required: `Please choose either 'resistance' or 'cardio'.`,
@@ -35,14 +35,14 @@ const exerciseSchema = new Schema({
         type: Number,
 
     }
-});
+};
 
 const workoutSchema = new Schema({
     day: {
         type: Date,
         default: Date.now,
     },
-    exercises: [exerciseSchema]
+    exercises: [exercises]
 });
 
 
