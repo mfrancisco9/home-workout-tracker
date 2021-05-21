@@ -2,8 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-
-//change this for deployment
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -20,8 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 // routes
-app.use(require("./routes/html/index"));
-app.use(require("./routes/api/index"));
+app.use(require("./routes/html/index.js"));
+app.use(require("./routes/api/index.js"));
 
 
 // Start the server
