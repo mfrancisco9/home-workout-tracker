@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const db = require ('../../models');
-console.log(db);
-
+const db = require ('../models');
 
 // workouts routes
 
@@ -61,4 +59,4 @@ router.post('/api/workouts/:id', async (req, res) => {
     })
 })
 
-module.exports = router
+module.exports = router;
